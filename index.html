@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Application / Registration Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #eff6ff 0, #f9fafb 40%, #e5e7eb 100%);
+      min-height: 100vh;
+    }
+    .glass-card {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.15);
+    }
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    code {
+      font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body class="text-slate-800">
+  <div class="min-h-screen flex flex-col">
+    <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+        <h1 class="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">Online Application / Registration</h1>
+        <nav class="flex gap-4 text-sm">
+          <a href="#form-section" class="text-sky-700 hover:text-sky-900 font-medium">Form</a>
+          <a href="#output-section" class="text-slate-600 hover:text-slate-900">Submission Output</a>
+          <a href="#report-section" class="text-slate-600 hover:text-slate-900">Report</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 py-8 space-y-10">
+        <!-- Application Form Section -->
+        <section id="form-section" class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h2 class="text-lg sm:text-xl font-semibold text-slate-900">Application / Registration Form</h2>
+              <p class="text-sm text-slate-600 mt-1">Fill in the details below and click <span class="font-semibold">Submit Application</span> to display a formatted summary of your information.</p>
+            </div>
+            <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1 border border-emerald-100">HTML • CSS • JavaScript • jQuery • PHP (backend example)</span>
+          </div>
+
+          <form id="applicationForm" class="space-y-6">
+            <!-- Personal Information -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="firstName" class="block text-sm font-medium text-slate-700 required">First Name</label>
+                <input id="firstName" name="firstName" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="John" required />
+              </div>
+              <div>
+                <label for="lastName" class="block text-sm font-medium text-slate-700 required">Last Name</label>
+                <input id="lastName" name="lastName" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Doe" required />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 required">Email</label>
+                <input id="email" name="email" type="email" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="you@example.com" required />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-slate-700 required">Phone Number</label>
+                <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="+1 555 123 4567" required />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label for="dob" class="block text-sm font-medium text-slate-700 required">Date of Birth</label>
+                <input id="dob" name="dob" type="date" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required />
+              </div>
+              <div>
+                <label for="gender" class="block text-sm font-medium text-slate-700 required">Gender</label>
+                <select id="gender" name="gender" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required>
+                  <option value="">Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Non-binary</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <div>
+                <label for="nationality" class="block text-sm font-medium text-slate-700">Nationality</label>
+                <input id="nationality" name="nationality" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="e.g., Indian" />
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="address" class="block text-sm font-medium text-slate-700 required">Address</label>
+                <textarea id="address" name="address" rows="3" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Street, City, State" required></textarea>
+              </div>
+              <div class="grid sm:grid-rows-2 gap-4">
+                <div>
+                  <label for="city" class="block text-sm font-medium text-slate-700 required">City</label>
+                  <input id="city" name="city" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label for="state" class="block text-sm font-medium text-slate-700 required">State</label>
+                    <input id="state" name="state" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required />
+                  </div>
+                  <div>
+                    <label for="pincode" class="block text-sm font-medium text-slate-700 required">PIN / ZIP</label>
+                    <input id="pincode" name="pincode" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Academic / Course Information -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="course" class="block text-sm font-medium text-slate-700 required">Course / Program Applying For</label>
+                <select id="course" name="course" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" required>
+                  <option value="">Select a course</option>
+                  <option>Bachelor of Computer Applications (BCA)</option>
+                  <option>Bachelor of Technology (B.Tech)</option>
+                  <option>Master of Computer Applications (MCA)</option>
+                  <option>Master of Business Administration (MBA)</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="qualification" class="block text-sm font-medium text-slate-700 required">Highest Qualification</label>
+                <input id="qualification" name="qualification" type="text" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="e.g., B.Sc. (Computer Science)" required />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 required">Mode of Study</label>
+                <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                  <label class="inline-flex items-center gap-2">
+                    <input type="radio" name="mode" value="Full-time" class="text-sky-600 border-slate-300" required />
+                    <span>Full-time</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2">
+                    <input type="radio" name="mode" value="Part-time" class="text-sky-600 border-slate-300" />
+                    <span>Part-time</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2">
+                    <input type="radio" name="mode" value="Online / Distance" class="text-sky-600 border-slate-300" />
+                    <span>Online / Distance</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700">Skills / Interests</label>
+                <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                  <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="skills" value="Programming" class="text-sky-600 border-slate-300" />
+                    <span>Programming</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="skills" value="Data Analysis" class="text-sky-600 border-slate-300" />
+                    <span>Data Analysis</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="skills" value="Web Development" class="text-sky-600 border-slate-300" />
+                    <span>Web Development</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="skills" value="Management" class="text-sky-600 border-slate-300" />
+                    <span>Management</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div>
+              <label for="statement" class="block text-sm font-medium text-slate-700">Brief Statement / Objective</label>
+              <textarea id="statement" name="statement" rows="3" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" placeholder="Describe your academic / career goals in 2-3 sentences."></textarea>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
+              <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+                <input id="agree" type="checkbox" class="text-sky-600 border-slate-300" required />
+                <span>I confirm that the above information is correct.</span>
+              </label>
+
+              <div class="flex gap-3 justify-end">
+                <button type="reset" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">Clear</button>
+                <button type="submit" class="inline-flex items-center justify-center rounded-lg bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1">
+                  Submit Application
+                </button>
+              </div>
+            </div>
+
+            <p id="formError" class="hidden text-sm text-red-600 mt-2">Please fill all required fields correctly before submitting.</p>
+          </form>
+        </section>
+
+        <!-- Output Section -->
+        <section id="output-section" class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <h2 class="text-lg sm:text-xl font-semibold text-slate-900">Formatted Submission Output</h2>
+            <span class="text-xs text-slate-500">Displayed using JavaScript & jQuery (client-side)</span>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">After you submit the form, your application details will appear below in a formatted layout. This simulates what a server-side PHP script might render.</p>
+
+          <div id="outputContainer" class="hidden fade-in border border-dashed border-sky-300 rounded-xl bg-sky-50/60 p-5 text-sm text-slate-800"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white/80 backdrop-blur mt-8">
+      <div class="max-w-5xl mx-auto px-4 py-4 text-center text-xs text-slate-500">
+        Online Application / Registration Form • Example academic assignment implementation
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#applicationForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const form = this;
+        if (!form.checkValidity()) {
+          $('#formError').removeClass('hidden');
+          form.reportValidity();
+          return;
+        }
+        $('#formError').addClass('hidden');
+
+        const getVal = (id) => $('#' + id).val().trim();
+        const firstName = getVal('firstName');
+        const lastName = getVal('lastName');
+        const email = getVal('email');
+        const phone = getVal('phone');
+        const dob = getVal('dob');
+        const gender = getVal('gender');
+        const nationality = getVal('nationality') || 'Not specified';
+        const address = getVal('address');
+        const city = getVal('city');
+        const state = getVal('state');
+        const pincode = getVal('pincode');
+        const course = getVal('course');
+        const qualification = getVal('qualification');
+        const mode = $('input[name="mode"]:checked').val();
+
+        const skills = [];
+        $('input[name="skills"]:checked').each(function () {
+          skills.push($(this).val());
+        });
+        const skillsText = skills.length ? skills.join(', ') : 'Not specified';
+
+        const statement = getVal('statement') || 'Not provided';
+
+        const outputHtml = `
+          <div class="space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-sky-100 pb-2">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">Application Summary</p>
+                <p class="text-base font-semibold text-slate-900">${firstName} ${lastName}</p>
+              </div>
+              <span class="inline-flex items-center rounded-full bg-emerald-100 border border-emerald-200 px-3 py-1 text-xs font-medium text-emerald-800">Submitted Successfully</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="md:col-span-2 space-y-3">
+                <div>
+                  <h4 class="text-xs font-semibold tracking-wide text-slate-500 uppercase">Personal Details</h4>
+                  <dl class="mt-1 grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                    <div>
+                      <dt class="text-slate-500">Full Name</dt>
+                      <dd class="font-medium text-slate-900">${firstName} ${lastName}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Date of Birth</dt>
+                      <dd class="font-medium text-slate-900">${dob}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Gender</dt>
+                      <dd class="font-medium text-slate-900">${gender}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Nationality</dt>
+                      <dd class="font-medium text-slate-900">${nationality}</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold tracking-wide text-slate-500 uppercase">Contact & Address</h4>
+                  <dl class="mt-1 text-xs space-y-1">
+                    <div>
+                      <dt class="inline text-slate-500">Email:</dt>
+                      <dd class="inline font-medium text-slate-900"> ${email}</dd>
+                    </div>
+                    <div>
+                      <dt class="inline text-slate-500">Phone:</dt>
+                      <dd class="inline font-medium text-slate-900"> ${phone}</dd>
+                    </div>
+                    <div>
+                      <dt class="inline text-slate-500">Address:</dt>
+                      <dd class="inline font-medium text-slate-900"> ${address}, ${city}, ${state} - ${pincode}</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div>
+                  <h4 class="text-xs font-semibold tracking-wide text-slate-500 uppercase">Academic Information</h4>
+                  <dl class="mt-1 grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                    <div>
+                      <dt class="text-slate-500">Course Applied For</dt>
+                      <dd class="font-medium text-slate-900">${course}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Highest Qualification</dt>
+                      <dd class="font-medium text-slate-900">${qualification}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Mode of Study</dt>
+                      <dd class="font-medium text-slate-900">${mode}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-slate-500">Skills / Interests</dt>
+                      <dd class="font-medium text-slate-900">${skillsText}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="border border-sky-100 rounded-lg bg-white/80 p-3 space-y-2">
+                <h4 class="text-xs font-semibold tracking-wide text-slate-500 uppercase">Statement / Objective</h4>
+                <p class="text-xs text-slate-800">${statement}</p>
+                <p class="text-[11px] text-slate-500 border-t border-dashed border-slate-200 pt-2">Note: In a real application, these details would be sent to a PHP backend for storage and further processing.</p>
+              </div>
+            </div>
+          </div>
+        `;
+
+        $('#outputContainer').html(outputHtml).removeClass('hidden');
+        $('html, body').animate({ scrollTop: $('#output-section').offset().top - 80 }, 500);
+      });
+    });
+  </script>
+</body>
+</html>
